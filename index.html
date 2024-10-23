@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Integrador Front</title>
+    <link rel="stylesheet" href="./style.css"> <!-- Enlace al archivo CSS -->
+  </head>
+  <body>
+    <div class="container">
+      <div class="search-bar">
+          <input type="text" id="searchInput" placeholder="Buscar productos..." oninput="buscarProductos()" />
+          <button id="agregarProductoBtn" onclick="abrirModal()">Agregar Producto</button>
+      </div>
+      <div class="left-panel">
+          <h1>Categorías</h1>
+          <button class="accordion"> Menú de Categorías</button>
+          <div id="categoria-panel" class="panel" style="display: none;">
+              <button onclick="mostrarProductos('Hamburguesas')">Hamburguesas</button>
+              <button onclick="mostrarProductos('Pizzas')">Pizzas</button>
+              <button onclick="mostrarProductos('Papas')">Papas</button>
+              <button onclick="mostrarProductos('Bebidas')">Bebidas</button>
+          </div>
+          <div id="productos">
+              <!-- Acá se cargan los productos -->
+          </div>
+      </div>
+  
+      <div class="right-panel">
+          <h1>Carrito de compras</h1>
+          <div id="carrito">
+              <p>El carrito está vacío</p>
+          </div>
+      </div>
+  
+      <!-- Modal para agregar producto -->
+      <div id="modal" class="modal" style="display:none;">
+          <div class="modal-content">
+              <span class="close" onclick="cerrarModal()">&times;</span>
+              <h2>Agregar Producto</h2>
+              <form id="productoForm" onsubmit="agregarProducto(event)">
+                  <label for="nombre">Nombre:</label>
+                  <input type="text" id="nombre" required>
+                  <label for="precio">Precio:</label>
+                  <input type="number" id="precio" required>
+                  <label for="imagen">Imagen URL:</label>
+                  <input type="url" id="imagen" required>
+                  <label for="categoria">Categoría:</label>
+                  <select id="categoria" required>
+                      <option value="Hamburguesas">Hamburguesas</option>
+                      <option value="Pizzas">Pizzas</option>
+                      <option value="Papas">Papas</option>
+                      <option value="Bebidas">Bebidas</option>
+                  </select>
+                  <button type="submit">Agregar</button>
+                  <button type="button" onclick="cerrarModal()">Cancelar</button>
+              </form>
+          </div>
+      </div>
+  </div>  
+    <script type="module" src="/main.js"></script>
+    <script type="module" src="/counter.js"></script>
+  </body>
+</html>
